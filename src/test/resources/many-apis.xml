@@ -1,0 +1,17 @@
+<apis>
+    <api>
+        <name>test1</name>
+    </api>
+    <api>
+        <name>test2</name>
+    </api>
+    <api>
+        <name>test3</name>
+    </api>
+    <api>
+        <name>test4</name>
+    </api>
+    <api>
+        <name>test5</name>
+    </api>
+</apis>
