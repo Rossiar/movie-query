@@ -1,5 +1,8 @@
 package com.henderson;
 
+import com.henderson.api.Query;
+import com.henderson.api.QueryFactory;
+import com.henderson.model.Movie;
 import com.henderson.properties.PropertyStore;
 import com.henderson.properties.SystemPropertyStore;
 import com.henderson.xml.ApiUnmarshaller;
@@ -37,7 +40,11 @@ public class Application {
         String queryString = this.properties.getProperty("movie");
         String apiName = this.properties.getProperty("api");
 
-        // TODO Make call to API
-
+        Query query = new QueryFactory().createQuery(apis.findApi(apiName));
+        for (Movie movie : query.movieQuery(queryString)) {
+            System.out.println(movie.display());
+        }
+        System.out.println();
+        System.out.println();
     }
 }

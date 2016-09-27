@@ -22,14 +22,11 @@ public class SystemPropertyStore implements PropertyStore {
 
     public String getProperty(String key) {
         // check cache first
-        String value = properties.get(key);
+        String cacheValue = properties.get(key);
+        // if not in the cache check the system store
+        String value = cacheValue != null ? cacheValue : System.getProperty(key);
 
-        // check in the System store
-        if (value == null) {
-            value = System.getProperty(key);
-        }
-
-        // not found
+        // if not found at all
         if (value == null) {
             throw new IllegalArgumentException(String.format(
                     "No value for parameter %s, please supply the parameter with -D%s", key, key));

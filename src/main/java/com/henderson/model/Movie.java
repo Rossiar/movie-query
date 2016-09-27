@@ -8,6 +8,14 @@ package com.henderson.model;
 public class Movie {
 
     private String title;
-    private int year;
-    private String director;
+    private String releaseDate;
+
+    public Movie(String title, String releaseDate) {
+        this.title = title;
+        this.releaseDate = releaseDate;
+    }
+
+    public String display() {
+        return String.format("%s, released in %s", this.title, this.releaseDate);
+    }
 }

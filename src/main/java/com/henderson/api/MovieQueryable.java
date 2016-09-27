@@ -12,10 +12,10 @@ import java.util.Map;
  */
 public class MovieQueryable implements Queryable {
 
-    public String query(String url, Map arguments) {
+    public String query(String url, Map parameters) {
         try {
             return Unirest.get(url)
-                    .queryString(arguments)
+                    .queryString(parameters)
                     .asString().getBody();
         } catch (UnirestException e) {
             throw new RuntimeException(String.format("Failed to query %s", url), e);

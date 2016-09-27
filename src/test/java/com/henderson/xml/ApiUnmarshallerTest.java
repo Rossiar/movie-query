@@ -1,4 +1,4 @@
-package com.henderson;
+package com.henderson.xml;
 
 import com.henderson.xml.Api;
 import com.henderson.xml.ApiUnmarshaller;

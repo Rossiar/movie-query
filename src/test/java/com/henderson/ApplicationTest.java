@@ -1,9 +1,11 @@
 package com.henderson;
 
 import com.henderson.properties.SystemPropertyStore;
+import com.henderson.xml.ApiUnmarshaller;
 import com.henderson.xml.Apis;
 import org.junit.Test;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,11 +21,21 @@ import java.util.Map;
 public class ApplicationTest {
 
     @Test
-    public void businessAsUsual() {
+    public void omdbQuery() {
         Map<String, String> args = new HashMap();
-        args.put("api", "abc");
-        args.put("movie", "def");
-        new Application(new SystemPropertyStore(args), new Apis()).start();
+        args.put("api", "OMDB");
+        args.put("movie", "Indiana Jones");
+        new Application(new SystemPropertyStore(args),
+                new ApiUnmarshaller().unmarshal(new File("src/test/resources/actual.xml"))).start();
+    }
+
+    @Test
+    public void tmdbQuery() {
+        Map<String, String> args = new HashMap();
+        args.put("api", "TMDB");
+        args.put("movie", "Indiana Jones");
+        new Application(new SystemPropertyStore(args),
+                new ApiUnmarshaller().unmarshal(new File("src/test/resources/actual.xml"))).start();
     }
 
     @Test(expected = IllegalArgumentException.class)

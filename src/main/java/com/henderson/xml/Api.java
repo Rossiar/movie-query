@@ -25,14 +25,18 @@ public class Api {
     private Arguments arguments;
 
     public String getUrl() {
-        return url;
+        return this.url;
     }
 
     public String getName() {
-        return name;
+        return this.name;
     }
 
     public Map<String, String> getArguments() {
-        return arguments.getArguments();
+        return this.arguments.getArguments();
+    }
+
+    public void addArgument(String key, String value) {
+        this.arguments.getArguments().put(key, value);
     }
 }

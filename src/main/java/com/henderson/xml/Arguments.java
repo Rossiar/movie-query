@@ -22,7 +22,7 @@ public class Arguments {
 
     public Map<String, String> getArguments() {
         Map<String, String> args = new HashMap<>();
-        for (Argument arg : arguments) {
+        for (Argument arg : this.arguments) {
             args.put(arg.getKey(), arg.getValue());
         }
         return args;

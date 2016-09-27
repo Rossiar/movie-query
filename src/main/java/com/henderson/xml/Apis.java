@@ -21,4 +21,14 @@ public class Apis {
     public List<Api> getApis() {
         return this.apis;
     }
+
+    public Api findApi(String apiName) {
+        for (Api api : this.getApis()) {
+            if (apiName.equalsIgnoreCase(api.getName())) {
+                return api;
+            }
+        }
+
+        throw new RuntimeException(String.format("The api with name %s was not found", apiName));
+    }
 }
