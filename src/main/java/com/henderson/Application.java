@@ -2,7 +2,6 @@ package com.henderson;
 
 import com.henderson.api.Query;
 import com.henderson.api.QueryFactory;
-import com.henderson.model.Movie;
 import com.henderson.properties.PropertyStore;
 import com.henderson.properties.SystemPropertyStore;
 import com.henderson.xml.ApiUnmarshaller;
@@ -36,14 +35,17 @@ public class Application {
         this.apis = apis;
     }
 
+    /**
+     * Main entry point for the system, separated from main() as now it can be unit tested (if needed).
+     */
     public void start() {
+        // access the provided parameters and create the query
         String queryString = this.properties.getProperty("movie");
         String apiName = this.properties.getProperty("api");
-
         Query query = new QueryFactory().createQuery(apis.findApi(apiName));
-        for (Movie movie : query.movieQuery(queryString)) {
-            System.out.println(movie.display());
-        }
+
+        // call the query and print the results
+        query.movieQuery(queryString).stream().forEach(System.out::println);
         System.out.println();
         System.out.println();
     }

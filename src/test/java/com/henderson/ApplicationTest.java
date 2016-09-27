@@ -29,15 +29,6 @@ public class ApplicationTest {
                 new ApiUnmarshaller().unmarshal(new File("src/test/resources/actual.xml"))).start();
     }
 
-    @Test
-    public void tmdbQuery() {
-        Map<String, String> args = new HashMap();
-        args.put("api", "TMDB");
-        args.put("movie", "Indiana Jones");
-        new Application(new SystemPropertyStore(args),
-                new ApiUnmarshaller().unmarshal(new File("src/test/resources/actual.xml"))).start();
-    }
-
     @Test(expected = IllegalArgumentException.class)
     public void errorNoMovieFound() {
         Map<String, String> args = new HashMap();

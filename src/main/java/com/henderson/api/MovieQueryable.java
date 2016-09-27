@@ -12,6 +12,13 @@ import java.util.Map;
  */
 public class MovieQueryable implements Queryable {
 
+    /**
+     * Sends a GET request to the given URL with the attached parameters.
+     *
+     * @param url        the URL of the website to query
+     * @param parameters the query parameters that will go in the request
+     * @return a string representing the result of the query
+     */
     public String query(String url, Map parameters) {
         try {
             return Unirest.get(url)

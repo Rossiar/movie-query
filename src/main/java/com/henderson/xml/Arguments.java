@@ -20,7 +20,9 @@ public class Arguments {
     @XmlElement(name = "argument")
     private List<Argument> arguments;
 
+
     public Map<String, String> getArguments() {
+        // breaks the list into a HashMap, which is what we want but JAXB is not smart enough to give us
         Map<String, String> args = new HashMap<>();
         for (Argument arg : this.arguments) {
             args.put(arg.getKey(), arg.getValue());

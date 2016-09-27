@@ -27,9 +27,15 @@ public class TmdbQuery implements Query {
         this.api = api;
     }
 
-    public List<Movie> movieQuery(String query) {
+    /**
+     * Search for a movie by title.
+     *
+     * @param title the title of the movie to search for
+     * @return a list of movies that matched the title
+     */
+    public List<Movie> movieQuery(String title) {
         Map<String, String> args = api.getArguments();
-        args.put("query", query);
+        args.put("query", title);
         JSONObject parent = new JSONObject(this.queryable.query(api.getUrl(), args));
         JSONArray results = parent.getJSONArray("results");
         List<Movie> movies = new ArrayList();

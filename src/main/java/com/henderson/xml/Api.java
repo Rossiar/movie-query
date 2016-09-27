@@ -36,7 +36,4 @@ public class Api {
         return this.arguments.getArguments();
     }
 
-    public void addArgument(String key, String value) {
-        this.arguments.getArguments().put(key, value);
-    }
 }

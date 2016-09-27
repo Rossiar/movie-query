@@ -10,19 +10,29 @@ import java.util.Map;
  */
 public class SystemPropertyStore implements PropertyStore {
 
-    protected Map<String, String> properties;
+    /**
+     * The local cache (saves lookups to system all the time), also allows injection during testing
+     */
+    protected Map<String, String> cache;
 
     public SystemPropertyStore() {
-        properties = new HashMap();
+        this.cache = new HashMap();
     }
 
-    public SystemPropertyStore(Map<String, String> properties) {
-        this.properties = properties;
+    public SystemPropertyStore(Map<String, String> cache) {
+        this.cache = cache;
     }
 
+    /**
+     * Checks a local cache, then the System cache for the given key/value pair,
+     * if the value cannot be found, an {@link IllegalArgumentException} is thrown.
+     *
+     * @param key the reference to the property
+     * @return the String value that is associated with this key.
+     */
     public String getProperty(String key) {
         // check cache first
-        String cacheValue = properties.get(key);
+        String cacheValue = this.cache.get(key);
         // if not in the cache check the system store
         String value = cacheValue != null ? cacheValue : System.getProperty(key);
 

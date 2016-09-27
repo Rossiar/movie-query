@@ -1,0 +1,12 @@
+<apis>
+    <api>
+        <name>OMDB</name>
+        <url>http://www.omdbapi.com/</url>
+        <arguments>
+            <argument>
+                <key>type</key>
+                <value>movie</value>
+            </argument>
+        </arguments>
+    </api>
+</apis>

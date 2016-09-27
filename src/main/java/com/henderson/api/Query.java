@@ -11,5 +11,12 @@ import java.util.List;
  */
 public interface Query {
 
-    List<Movie> movieQuery(String query);
+    /**
+     * Provides a list of movies that have the provided title in
+     * their name.
+     *
+     * @param title the title of the movie to search for
+     * @return zero to many Movies in a list, the List will never be <code>null</code>
+     */
+    List<Movie> movieQuery(String title);
 }

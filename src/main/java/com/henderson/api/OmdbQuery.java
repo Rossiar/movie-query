@@ -24,10 +24,16 @@ public class OmdbQuery implements Query {
         this.api = api;
     }
 
-    public List<Movie> movieQuery(String query) {
-        Map<String, String> args = api.getArguments();
-        args.put("s", query);
-        JSONObject parent = new JSONObject(this.queryable.query(api.getUrl(), args));
+    /**
+     * Search for a movie by title.
+     *
+     * @param title the title of the movie to search for
+     * @return a list of movies that matched the title
+     */
+    public List<Movie> movieQuery(String title) {
+        Map<String, String> args = this.api.getArguments();
+        args.put("s", title);
+        JSONObject parent = new JSONObject(this.queryable.query(this.api.getUrl(), args));
         JSONArray results = parent.getJSONArray("Search");
         List<Movie> movies = new ArrayList();
 
